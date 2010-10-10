@@ -35,7 +35,7 @@
       $this->setName('Environment check');
       
       $this->check_is_writable = array(
-        '/config/config.php',
+        '/config',
         '/public/files',
         '/cache',
         '/upload'

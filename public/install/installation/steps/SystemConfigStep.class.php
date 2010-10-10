@@ -43,13 +43,9 @@
         $protocol = 'http://';
       } // if
       
-      $request_url = without_slash($protocol . dirname($_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']));
-      if (($rpos = strrpos($request_url, '/')) !== false) {
-        $installation_url = substr($request_url, 0, $rpos - 7); // remove /public ;)
-      } else {
-        $installation_url = '';
-      } // if
-      
+      $request_url = without_slash($protocol . dirname(dirname($_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'])));
+      $installation_url = strpos($request_url, '/public') !== false ? substr($request_url, 0, strpos($request_url, '/public')) : $request_url;
+
       $config_form_data = array_var($_POST, 'config_form');
       if (!is_array($config_form_data)) {
         $config_form_data = array(

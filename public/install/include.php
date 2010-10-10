@@ -21,10 +21,10 @@
   define('INSTALLATION_PATH', realpath(INSTALLER_PATH . '/../../'));
   
   // Check the config
-  $config_is_set = require_once INSTALLATION_PATH . '/config/config.php';
-  if ($config_is_set) {
-    die('<strong>Installation error:</strong> ProjectPier is already installed');
-  } // if
+  if (file_exists(INSTALLATION_PATH . '/config/config.php') && require INSTALLATION_PATH . '/config/config.php')
+  {
+      die('<strong>Installation error:</strong> ProjectPier is already installed');
+  }
   
   // Include library
   require_once INSTALLATION_PATH . '/environment/functions/general.php';
@@ -42,5 +42,3 @@
   require_once INSTALLER_PATH . '/installation/acInstallation.class.php';
   
   require_once INSTALLATION_PATH . '/environment/classes/template/Template.class.php';
-
-?>

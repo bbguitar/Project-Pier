@@ -30,5 +30,3 @@
   define('SHOW_MILESTONE_BODY', true);
   
   return true;
-  
-?>
